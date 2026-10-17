@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Plan de travail des vacances · Hedy & Paul</title>
+<style>
+:root{--navy:#123a5f;--teal:#0e8577;--ok:#12b886;--bg:#f4f6fa;--card:#fff;--line:#e3e8f0;--mut:#5b6b7c;--h:#e8590c;--p:#3b5bdb;--c:#c2255c;--b:#868e96}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#1c2733;font:16.5px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:20px 16px 70px}
+header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;padding:26px 28px;background:linear-gradient(120deg,var(--navy),#1d5c8a);color:#fff;border-radius:18px;margin-bottom:18px}
+h1{margin:0;font-size:clamp(1.5rem,4vw,2.1rem);line-height:1.15}
+.lead{margin:6px 0 0;font-size:1.02rem;opacity:.92}
+.live{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;font-size:.86rem;font-weight:600}
+.live .dot{width:10px;height:10px;border-radius:50%;background:#7ff2c9;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.notice{background:#fff7e6;border:1.5px solid #ffd66b;color:#7a4d00;border-radius:12px;padding:10px 16px;margin-bottom:16px;font-weight:600}
+.how{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:18px}
+.how h2{margin:0 0 10px;font-size:1.05rem;color:var(--navy)}
+.how ol{margin:0;padding-left:20px}
+.how li{margin:6px 0}
+.today{background:linear-gradient(120deg,#eafaf5,#f2fbff);border:1.5px solid #bfe9dd;border-radius:12px;padding:12px 18px;margin-bottom:18px;font-weight:600;color:#0b6a52}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 18px}
+.stat b{font-size:1.65rem;display:block;font-variant-numeric:tabular-nums;color:var(--navy)}
+.stat span{color:var(--mut);font-size:.85rem;font-weight:600}
+.bar{height:10px;background:#e9edf3;border-radius:6px;overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--ok));border-radius:6px;transition:width .5s}
+h2.sec{color:var(--navy);margin:26px 0 10px;font-size:1.25rem}
+.day{background:var(--card);border:1.5px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:#eef2f8;padding:12px 18px;border-bottom:1.5px solid var(--line)}
+.dh h3{margin:0;font-size:1.05rem;color:var(--navy)}
+.dh .dp{color:var(--mut);font-size:.86rem;font-weight:700}
+.task{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.task:last-child{border-bottom:0}
+.task.done{background:#f2fbf7}
+.hour{flex:none;width:92px;text-align:center;background:#f0f4f9;border-radius:10px;padding:8px 4px;font-weight:800;color:var(--navy);font-size:.92rem;align-self:flex-start}
+.hour small{display:block;font-weight:600;color:var(--mut);font-size:.76rem}
+.tb{flex:1;min-width:0}
+.tt{font-weight:800;font-size:1.02rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{font-size:.72rem;font-weight:800;border-radius:999px;padding:2px 10px;color:#fff}
+.chip.c{background:var(--c)}.chip.h{background:var(--h)}.chip.p{background:var(--p)}.chip.b{background:var(--b)}
+.detail{color:var(--mut);font-size:.9rem;margin-top:4px}
+.detail b{color:#3a4b5d}
+.del{margin-top:8px;font-size:.93rem;color:#33414f}
+.del .k,.cri .k{font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);margin-right:6px}
+.cri{margin-top:4px;font-size:.93rem;color:var(--mut)}
+.state{flex:none;align-self:flex-start;font-weight:800;font-size:.84rem;border-radius:999px;padding:5px 12px;white-space:nowrap}
+.state.ok{background:#e3f9ef;color:#0b7a55}
+.state.todo{background:#edf0f4;color:#5b6b7c}
+.comments{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:18px 22px}
+.comments h2{margin:0 0 4px;color:var(--navy);font-size:1.2rem}
+.hint{color:var(--mut);font-size:.94rem;margin:0 0 14px}
+select,textarea{font:inherit;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fbfcfe;width:100%}
+select{max-width:280px}
+textarea{min-height:84px;resize:vertical}
+button.send{font:inherit;font-weight:800;background:var(--teal);color:#fff;border:0;border-radius:10px;padding:12px 22px;cursor:pointer}
+button.send:disabled{opacity:.5;cursor:wait}
+.okmsg{display:none;margin-top:10px;color:#0b7a55;font-weight:700}
+.msg{border-top:1px solid var(--line);padding:12px 0}
+.msg .who{font-weight:800;color:var(--navy);font-size:.93rem}
+.msg .who.h{color:var(--h)}.msg .who.p{color:var(--p)}
+.msg .when{color:var(--mut);font-size:.8rem;margin-left:8px;font-weight:600}
+.msg .txt{margin:4px 0 0;white-space:pre-wrap}
+.printwrap{text-align:center;margin-top:22px}
+button.print{font:inherit;font-weight:800;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:10px 20px;cursor:pointer;color:var(--navy)}
+footer{margin-top:26px;color:var(--mut);font-size:.85rem;text-align:center}
+@media print{.how,.comments,.live,.printwrap,.notice{display:none}body{background:#fff}.day{break-inside:avoid}main{padding:0;max-width:100%}}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <div>
+    <h1>Plan de travail des vacances 📘</h1>
+    <p class="lead">Hedy &amp; Paul · classe de Première · Semaine 1 : lundi 19 → dimanche 25 octobre 2026</p>
+  </div>
+  <div class="live"><span class="dot"></span> Mise à jour en direct</div>
+</header>
+
+<div class="notice" id="demo" hidden>Mode démonstration : les données affichées sont des exemples. Une fois le projet relié à Supabase, cette page montrera la progression réelle.</div>
+
+<section class="how">
+  <h2>Comment utiliser cette page (tout simple)</h2>
+  <ol>
+    <li><b>Rien à installer, rien à configurer.</b> Gardez cette page dans vos favoris : elle se met à jour toute seule.</li>
+    <li><b>Coche verte ✓</b> : la tâche a été terminée par Hedy ou Paul sur leur propre application, avec l'heure de validation.</li>
+    <li>Chaque tâche précise le <b>livrable</b> (ce qui doit exister à la fin) et le <b>critère de réussite</b> (comment le vérifier).</li>
+    <li>Les créneaux <b>« travail non fini »</b> sont des marges de rattrapage prévues pour absorber les imprévus : ce n'est pas du temps libre, c'est de la sécurité.</li>
+    <li>Vous pouvez <b>laisser un message</b> en bas de page : ils le recevront sur leur application et pourront vous répondre ici même.</li>
+    <li>💡 Envie d'une version papier ? Le bouton <b>Version imprimable</b> en bas de page.</li>
+  </ol>
+</section>
+
+<div class="today" id="today" hidden></div>
+<section class="stats" id="stats"></section>
+
+<h2 class="sec">Planning détaillé, jour par jour</h2>
+<section id="days"></section>
+
+<section class="comments">
+  <h2>💬 Vos messages</h2>
+  <p class="hint">Un encouragement, une remarque ou une question : Hedy et Paul le verront sur leur application, et leur réponse apparaîtra ici.</p>
+  <form id="cform">
+    <div class="row" style="margin-bottom:10px">
+      <select id="who" required>
+        <option value="" disabled selected>Qui écrit ?</option>
+        <option value="Maman de Hedy">Maman de Hedy</option>
+        <option value="Maman de Paul">Maman de Paul</option>
+        <option value="Un parent">Un parent</option>
+      </select>
+    </div>
+    <textarea id="txt" placeholder="Votre message…" required></textarea>
+    <div style="margin-top:10px"><button class="send" type="submit" id="send">Envoyer le message</button></div>
+    <p class="okmsg" id="okmsg">✓ Message envoyé — ils le verront sur leur application.</p>
+  </form>
+  <div id="thread" style="margin-top:16px"></div>
+</section>
+
+<div class="printwrap"><button class="print" onclick="window.print()">🖨️ Version imprimable</button></div>
+<footer>Plan de travail partagé en famille · Semaine 1 · 19–25 octobre 2026 · Généré pour Hedy &amp; Paul</footer>
+</main>
+
+<script>
+/* ================================================================
+   À COMPLÉTER AU MOMENT DU DÉPLOIEMENT (voir le guide fourni) :
+   1. Remplacez SUPABASE_URL par l'URL de votre projet Supabase
+   2. Remplacez SUPABASE_ANON_KEY par la clé « anon / public »
+   ================================================================ */
+const SUPABASE_URL = "
+https://dxmewqoosrheepsqudip.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4bWV3cW9vc3JoZWVwc3F1ZGlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIyNDQ5NDgsImV4cCI6MjEwNzgyMDk0OH0.4uDpIUaYTuMmTleobQeotP4PtkcaZFY1eozalssGrO4";
+/* ================================================================ */
+
+const DEMO = SUPABASE_URL.indexOf("REMPLACEZ") > -1 || SUPABASE_ANON_KEY.indexOf("REMPLACEZ") > -1;
+
+const DAYS = [
+  { n: "Lundi", d: "lundi 19 octobre" },
+  { n: "Mardi", d: "mardi 20 octobre" },
+  { n: "Mercredi", d: "mercredi 21 octobre" },
+  { n: "Jeudi", d: "jeudi 22 octobre" },
+  { n: "Vendredi", d: "vendredi 23 octobre" },
+  { n: "Samedi", d: "samedi 24 octobre" },
+  { n: "Dimanche", d: "dimanche 25 octobre" }
+];
+
+const OWNER = { c: ["Hedy & Paul", "c"], h: ["Hedy", "h"], p: ["Paul", "p"], b: ["Marge", "b"] };
+
+/* id, jour (0-6), heure, durée (min), qui, titre, détail Hedy, détail Paul, livrable, critère de réussite */
+const T = [
+  { id: "l1", day: 0, time: "09h30", dur: 45, o: "c", t: "Français", h: "Apprendre le n°2 par cœur", p: "Cahiers de Douai : travail du cahier", del: "Leçon n°2 apprise par cœur (Hedy) · cahier de Douai entièrement travaillé (Paul)", cri: "Hedy récite sans ses notes · Paul peut résumer chaque texte à l'oral" },
+  { id: "l2", day: 0, time: "10h30", dur: 90, o: "p", t: "Exposé de latin", h: "", p: "", del: "Plan détaillé rédigé, support de diapositives finalisé, 1 répétition chronométrée complète", cri: "Exposé tenu en 8 à 10 minutes sans lire ses notes" },
+  { id: "l3", day: 0, time: "14h30", dur: 45, o: "p", t: "Poème à écrire", h: "", p: "", del: "Poème rédigé au propre, consignes de forme respectées (strophes, vers, thème)", cri: "Relu à voix haute, structure vérifiée en entier" },
+  { id: "l4", day: 0, time: "15h30", dur: 45, o: "h", t: "Présentation Erasmus", h: "", p: "", del: "Support finalisé + répétition à voix haute", cri: "Présentation fluide sans lire les diapositives" },
+  { id: "l5", day: 0, time: "16h30", dur: 45, o: "h", t: "Finir la vidéo en anglais", h: "", p: "", del: "Vidéo montée et exportée", cri: "Fichier final visionné une fois sans coupure" },
+  { id: "m1", day: 1, time: "09h30", dur: 45, o: "b", t: "Travail non fini", h: "", p: "", del: "Marge de rattrapage : tout retard du lundi est absorbé ici", cri: "La liste « travail non fini » est vide" },
+  { id: "m2", day: 1, time: "10h30", dur: 45, o: "c", t: "Lecture en français", h: "Lecture cursive", p: "Lecture de français", del: "Chapitres prévus lus et passages importants marqués", cri: "Sait raconter ce qui a été lu en 2 minutes" },
+  { id: "m3", day: 1, time: "11h15", dur: 90, o: "c", t: "Préparation rédaction : dissertation de français + commentaire", h: "", p: "Commentaire d'un texte poétique inconnu ou dissertation sur les Cahiers de Douai de Rimbaud (parcours « Émancipations créatrices »)", del: "2 brouillons de plan (1 dissertation + 1 commentaire) avec introductions rédigées", cri: "Chaque plan tient en 3 parties avec des exemples précis" },
+  { id: "m4", day: 1, time: "14h30", dur: 45, o: "h", t: "Allemand : évaluation", h: "", p: "", del: "Fiches relues + 1 exercice type fait", cri: "Réussit un test écrit sans notes" },
+  { id: "me1", day: 2, time: "09h30", dur: 90, o: "c", t: "Réviser DST SVT / éval de maths", h: "DST de SVT + éval de maths (second degré)", p: "Éval de probabilités + DS de SVT", del: "Fiches de révision + 2 exercices d'annales en maths + 1 plan de révision SVT, chacun pour ses évaluations", cri: "Refait un exercice type par matière sans erreur majeure" },
+  { id: "me2", day: 2, time: "11h15", dur: 45, o: "c", t: "Exercices maths / physique / SVT", h: "", p: "", del: "Série d'exercices faite et corrigée", cri: "Réponses vérifiées, erreurs notées pour être revues" },
+  { id: "me3", day: 2, time: "14h30", dur: 30, o: "c", t: "EMC (Enseignement moral et civique)", h: "", p: "", del: "Cours relu + notions clés mises en fiche", cri: "Sait définir les notions du chapitre" },
+  { id: "me4", day: 2, time: "15h15", dur: 45, o: "h", t: "Histoire-géographie", h: "Exercices d'histoire", p: "", del: "Exercices d'histoire rédigés par écrit", cri: "Exercices corrigés, dates clés connues" },
+  { id: "j1", day: 3, time: "09h30", dur: 45, o: "b", t: "Travail non fini", h: "", p: "", del: "Marge de rattrapage : tout retard de début de semaine est absorbé ici", cri: "La liste « travail non fini » est vide" },
+  { id: "j2", day: 3, time: "10h30", dur: 45, o: "c", t: "Espagnol / Allemand", h: "Allemand", p: "Espagnol", del: "Vocabulaire + conjugaison relus, 1 exercice oral fait", cri: "10 phrases traduites sans dictionnaire" },
+  { id: "j3", day: 3, time: "11h15", dur: 45, o: "c", t: "Français", h: "Révision", p: "Cahiers de Douai : commentaire / dissertation", del: "Fiche de révision de français complétée", cri: "Sait citer 5 citations des Cahiers de Douai" },
+  { id: "j4", day: 3, time: "14h30", dur: 45, o: "c", t: "SVT (spécialité)", h: "", p: "Éval de SVT, DS de SVT", del: "Chapitres de spé SVT relus + schémas refaits", cri: "Reproduit un schéma bilan de mémoire" },
+  { id: "v1", day: 4, time: "09h30", dur: 45, o: "b", t: "Travail non fini", h: "", p: "", del: "Marge de rattrapage : tout retard est absorbé ici", cri: "La liste « travail non fini » est vide" },
+  { id: "v2", day: 4, time: "10h30", dur: 90, o: "c", t: "Mathématiques (spé) + Physique-chimie (spé)", h: "Contrôle de physique-chimie", p: "Contrôle de physique-chimie", del: "Exercices de maths spé + fiches de physique-chimie pour le contrôle", cri: "1 contrôle blanc de physique-chimie réussi" },
+  { id: "v3", day: 4, time: "14h30", dur: 45, o: "c", t: "ES · Erasmus · EMC", h: "Erasmus", p: "Révision éval d'ES", del: "Fiches ES + support Erasmus finalisé", cri: "Répond à des questions rapides d'ES sans notes" },
+  { id: "s1", day: 5, time: "09h30", dur: 45, o: "b", t: "Travail non fini", h: "", p: "", del: "Marge de rattrapage : tout retard de fin de semaine est absorbé ici", cri: "La liste « travail non fini » est vide" },
+  { id: "s2", day: 5, time: "10h30", dur: 45, o: "c", t: "Espagnol / Allemand", h: "Allemand", p: "Espagnol", del: "Vocabulaire et expressions relus", cri: "10 phrases traduites sans dictionnaire" },
+  { id: "s3", day: 5, time: "11h15", dur: 90, o: "c", t: "Français", h: "", p: "Bac de français : préparation globale", del: "Planning de révision du bac de français + 1 entraînement complet (question ou écrit)", cri: "Sait dérouler la méthode de chaque exercice de l'écrit" },
+  { id: "d1", day: 6, time: "09h30", dur: 45, o: "b", t: "Travail non fini", h: "", p: "", del: "Dernière marge : tout ce qui traîne est terminé avant la reprise", cri: "Aucun retard en fin de semaine" }
+];
+
+const WORK = T.filter(x => x.o !== "b");
+const S = { done: {}, comments: [] };
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;") }
+function fmtMin(m){ if (m < 60) return m + " min"; const h = Math.floor(m / 60), r = m % 60; return h + " h" + (r ? String(r).padStart(2,"0") : "") }
+function fmtDate(iso){
+  const d = new Date(iso);
+  return d.toLocaleDateString("fr-FR",{day:"numeric",month:"short"}) + " à " + d.toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+}
+
+async function api(path, method, body){
+  const r = await fetch(SUPABASE_URL + "/rest/v1/" + path, {
+    method: method || "GET",
+    headers: { "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY, "Content-Type": "application/json" },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!r.ok) throw new Error("API " + r.status);
+  return r.json();
+}
+
+function demoData(){
+  const at = (h, m) => "2026-10-" + String(19 + (h > 12 ? 1 : 0)).padStart(2,"0") + "T" + String(h).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":00";
+  ["l1","l2","l3","l4","l5","m1","m2"].forEach(id => S.done[id] = at(9 + (id.length * 2) % 8, 12));
+  S.comments = [
+    { author: "Maman de Hedy", message: "Bravo pour lundi, tout est coché ! On est fières de vous deux. 💪", created_at: "2026-10-20T18:42:00" },
+    { author: "Hedy", message: "Merci maman ! L'exposé de latin de Paul est top, il l'a même chronométré.", created_at: "2026-10-20T19:05:00" }
+  ];
+}
+
+function lastActivity(){
+  let last = null;
+  for (const id in S.done){ const v = S.done[id]; if (v && v !== true && (!last || v > last)) last = v; }
+  return last;
+}
+
+function render(){
+  const doneN = WORK.filter(x => S.done[x.id]).length;
+  const remain = WORK.filter(x => !S.done[x.id]).reduce((a, x) => a + x.dur, 0);
+  const hedyN = T.filter(x => x.o === "h" && S.done[x.id]).length;
+  const paulN = T.filter(x => x.o === "p" && S.done[x.id]).length;
+  const pc = Math.round(doneN * 100 / WORK.length);
+  const la = lastActivity();
+
+  document.getElementById("stats").innerHTML =
+    '<div class="stat"><b>' + doneN + " / " + WORK.length + '</b><span>Blocs de travail terminés</span>'
+    + '<div class="bar"><i style="width:' + pc + '%"></i></div></div>'
+    + '<div class="stat"><b>' + fmtMin(remain) + '</b><span>Temps de travail restant</span></div>'
+    + '<div class="stat"><b>' + hedyN + " / " + T.filter(x=>x.o==="h").length + '</b><span>Blocs personnels de Hedy</span></div>'
+    + '<div class="stat"><b>' + paulN + " / " + T.filter(x=>x.o==="p").length + '</b><span>Blocs personnels de Paul</span></div>'
+    + '<div class="stat"><b>' + (la ? fmtDate(la) : "—") + '</b><span>Dernière validation</span></div>'
+    + '<div class="stat"><b>5 / 5</b><span>Évaluations révisées avant dimanche</span></div>';
+
+  /* bandeau « aujourd'hui » */
+  const now = new Date();
+  const start = new Date(2026, 9, 19);
+  const idx = Math.floor((now - start) / 86400000);
+  const todayEl = document.getElementById("today");
+  if (idx >= 0 && idx < 7){
+    const dw = T.filter(x => x.day === idx && x.o !== "b");
+    const dn = dw.filter(x => S.done[x.id]).length;
+    todayEl.hidden = false;
+    todayEl.textContent = "📅 Aujourd'hui : " + DAYS[idx].n + " " + (19 + idx) + " octobre — " + dn + " bloc" + (dn > 1 ? "s" : "") + " terminé" + (dn > 1 ? "s" : "") + " sur " + dw.length + " prévu" + (dw.length > 1 ? "s" : "") + (dn === dw.length && dw.length ? ". Journée validée ✨" : ".");
+  } else if (idx < 0) {
+    todayEl.hidden = false;
+    todayEl.textContent = "📅 La semaine de travail commence lundi 19 octobre. Ce planning couvre les 19 blocs à faire avant dimanche 25.";
+  }
+
+  /* planning jour par jour */
+  let h = "";
+  DAYS.forEach((d, i) => {
+    const xs = T.filter(x => x.day === i);
+    const dw = xs.filter(x => x.o !== "b");
+    const dn = dw.filter(x => S.done[x.id]).length;
+    const rem = dw.filter(x => !S.done[x.id]).reduce((a, x) => a + x.dur, 0);
+    h += '<section class="day"><div class="dh"><h3>' + d.n + " · " + d.d + '</h3><span class="dp">'
+      + (dw.length ? (dn + " / " + dw.length + " ✓" + (rem ? " · " + fmtMin(rem) + " restantes" : " · ✨ Journée validée")) : "Journée de rattrapage")
+      + '</span></div>';
+    xs.forEach(x => {
+      const done = !!S.done[x.id];
+      const own = OWNER[x.o];
+      const det = [];
+      if (x.h) det.push('<div class="detail"><b>Hedy :</b> ' + esc(x.h) + "</div>");
+      if (x.p) det.push('<div class="detail"><b>Paul :</b> ' + esc(x.p) + "</div>");
+      h += '<div class="task' + (done ? " done" : "") + '">'
+        + '<div class="hour">' + (x.o === "b" ? "Flexible" : x.time) + "<small>" + x.dur + " min</small></div>"
+        + '<div class="tb"><div class="tt">' + esc(x.t) + ' <span class="chip ' + own[1] + '">' + own[0] + "</span></div>"
+        + det.join("")
+        + '<div class="del"><span class="k">Livrable</span>' + esc(x.del) + "</div>"
+        + '<div class="cri"><span class="k">Validé quand</span>' + esc(x.cri) + "</div></div>"
+        + '<div class="state ' + (done ? "ok" : "todo") + '">'
+        + (done ? "✓ Fait" + (S.done[x.id] !== true ? " · " + fmtDate(S.done[x.id]) : "") : (x.o === "b" ? "Marge" : "À faire"))
+        + "</div></div>";
+    });
+    h += "</section>";
+  });
+  document.getElementById("days").innerHTML = h;
+
+  /* messages */
+  const list = S.comments.slice().reverse();
+  document.getElementById("thread").innerHTML = list.length ? list.map(c => {
+    const isStudent = c.author === "Hedy" || c.author === "Paul";
+    return '<div class="msg' + (isStudent ? "" : "") + '"><div><span class="who' + (c.author === "Hedy" ? " h" : c.author === "Paul" ? " p" : "") + '">' + esc(c.author) + '</span><span class="when">' + fmtDate(c.created_at) + '</span></div><p class="txt">' + esc(c.message) + "</p></div>";
+  }).join("") : '<p class="hint">Aucun message pour l\'instant — écrivez le premier !</p>';
+}
+
+async function load(){
+  if (DEMO){ demoData(); render(); return; }
+  try {
+    const pr = await api("progress?select=task_id,done,done_at");
+    const cm = await api("comments?select=id,author,message,created_at&order=created_at.asc&limit=200");
+    S.done = {}; pr.forEach(r => S.done[r.task_id] = r.done ? (r.done_at || true) : false);
+    S.comments = cm;
+    render();
+  } catch(e) { /* silence : on retentera au prochain cycle */ }
+}
+
+function logVisit(){
+  if (DEMO) return;
+  api("visits", "POST", { page: "consultation du planning" }).catch(() => {});
+}
+
+document.getElementById("cform").addEventListener("submit", async e => {
+  e.preventDefault();
+  const who = document.getElementById("who").value;
+  const txt = document.getElementById("txt").value.trim();
+  if (!who || !txt) return;
+  const btn = document.getElementById("send");
+  btn.disabled = true;
+  if (DEMO){
+    S.comments.push({ author: who, message: txt, created_at: new Date().toISOString() });
+  } else {
+    try { await api("comments", "POST", { author: who, message: txt }); }
+    catch(err){ btn.disabled = false; return; }
+    logVisit();
+  }
+  document.getElementById("txt").value = "";
+  btn.disabled = false;
+  document.getElementById("okmsg").style.display = "block";
+  setTimeout(() => document.getElementById("okmsg").style.display = "none", 5000);
+  load();
+});
+
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+setInterval(load, 20000);
+logVisit();
+load();
+</script>
+</body>
+</html>
